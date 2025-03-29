@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_ATLAS_PW": "Askext003",
+    "MONGO_DB_NAME": "e_cart"
+  }
+}
