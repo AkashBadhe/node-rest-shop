@@ -1,4 +1,4 @@
- const router = require('express').Router();
+const router = require('express').Router();
 const mongoose = require('mongoose');
 const Product = require('../models/product');
 
@@ -100,24 +100,5 @@ router.patch('/:productId', (req, res, next) => {
       res.status(500).json({ error: err });
     });
 });
-
-router.delete('/:productId', (req, res, next) => {
-  const productId = req.params.productId;
-  Product.delete({ _id: productId })
-    .exec()
-    .then((result) => {
-      res.status(200).json({
-        message: 'Product deleted successfully',
-        request: {
-          type: 'POST',
-          url: 'http://localhost:3000/products',
-          body: { name: 'String', price: 'Number' },
-        },
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json({ error: err });
-    });
 
 module.exports = router;
