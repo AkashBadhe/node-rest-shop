@@ -11,7 +11,7 @@ services:
       - MONGO_ATLAS_PW=admin
       - MONGO_DB_NAME=shop
     volumes:
-      - .:/usr/src/app
+      - ${b5path}/code/node-rest-shop/:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - mongo
