@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Order = require('../models/order'); // Import the Order model
 
 const router = express.Router();
+const baseUrl = `${process.env.BASE_URL}:${process.env.PORT}`;
 
 // Get all orders
 router.get('/', (req, res) => {
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
           })),
           request: {
             type: 'GET',
-            url: `http://localhost:3000/orders/${order._id}`,
+            url: `${baseUrl}/orders/${order._id}`,
           },
         })),
       });
@@ -52,7 +53,7 @@ router.post('/', (req, res) => {
           })),
           request: {
             type: 'GET',
-            url: `http://localhost:3000/orders/${result._id}`,
+            url: `${baseUrl}/orders/${result._id}`,
           },
         },
       });
@@ -82,7 +83,7 @@ router.get('/:orderId', (req, res) => {
           },
           request: {
             type: 'GET',
-            url: 'http://localhost:3000/orders',
+            url: '${baseUrl}/orders',
           },
         });
       } else {
@@ -105,7 +106,7 @@ router.delete('/:orderId', (req, res) => {
         message: 'Order deleted successfully',
         request: {
           type: 'POST',
-          url: 'http://localhost:3000/orders',
+          url: '${baseUrl}/orders',
           body: { products: [{ product: 'Product ID', quantity: 'Number' }] },
         },
       });

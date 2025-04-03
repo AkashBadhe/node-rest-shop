@@ -6,12 +6,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3012:3012' # Map container port 3030 to host port 3030
+      - "${PORT}:${PORT}"
     environment:
-      - MONGO_ATLAS_PW=admin
-      - MONGO_DB_NAME=shop
+      - PORT=${PORT}
+      - BASE_URL=${BASE_URL}
+      - MONGO_DB_NAME=${MONGO_DB_NAME}
     volumes:
-      - ${b5path}/code/node-rest-shop/:/usr/src/app
+      - ./:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - mongo

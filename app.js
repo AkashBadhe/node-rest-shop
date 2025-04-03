@@ -1,20 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const mongoose = require('mongoose');
-
-// mongoose
-//   .connect(
-//     `mongodb+srv://askext:${process.env.MONGO_ATLAS_PW}@learningcluster.pcy5ikr.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority&appName=LearningCluster`
-//   )
-//   .then(() => {
-//     console.log('MongoDB connected successfully');
-//   })
-//   .catch((err) => {
-//     console.error('MongoDB connection error:', err);
-//   });
 
 // Connect locally to MongoDB
 mongoose

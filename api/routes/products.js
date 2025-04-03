@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const Product = require('../models/product');
+const baseUrl = `${process.env.BASE_URL}:${process.env.PORT}`;
 
 router.get('/', (req, res, next) => {
   Product.find()
@@ -16,7 +17,7 @@ router.get('/', (req, res, next) => {
           productImage: doc.productImage,
           request: {
             type: 'GET',
-            url: `http://localhost:3000/products/${doc._id}`,
+            url: `${baseUrl}/${doc._id}`,
           },
         })),
       };
@@ -65,7 +66,7 @@ router.get('/:productId', (req, res, next) => {
           product: doc,
           request: {
             type: 'GET',
-            url: 'http://localhost:3000/products',
+            url: '${baseUrl}/products',
           },
         });
       } else {
@@ -91,7 +92,7 @@ router.patch('/:productId', (req, res, next) => {
         message: 'Product updated successfully',
         request: {
           type: 'GET',
-          url: `http://localhost:3000/products/${productId}`,
+          url: `${baseUrl}/products/${productId}`,
         },
       });
     })
